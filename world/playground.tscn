@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://cc4gjvu4yf2g2"]
+[gd_scene load_steps=11 format=4 uid="uid://cc4gjvu4yf2g2"]
 
 [ext_resource type="Script" uid="uid://bcbma0lx8x4ji" path="res://world/playground.gd" id="1_jwb06"]
 [ext_resource type="Environment" uid="uid://cosutky1t23ak" path="res://world/environment.tres" id="2_0mms7"]
 [ext_resource type="CameraAttributesPractical" uid="uid://dc13s35ocgybj" path="res://world/camera_attributes_practical.tres" id="3_is8ov"]
 [ext_resource type="Compositor" uid="uid://dhvttx3ewvu3e" path="res://world/compositor.tres" id="4_83q53"]
-[ext_resource type="PackedScene" uid="uid://ciuot6h64jvpp" path="res://scenes/playerspawn/player_spawn.tscn" id="5_83q53"]
+[ext_resource type="PackedScene" uid="uid://ciuot6h64jvpp" path="res://prefabs/playerspawn/player_spawn.tscn" id="5_83q53"]
 [ext_resource type="Script" uid="uid://d4feanreabm81" path="res://addons/gaea/nodes/generator.gd" id="8_urtwq"]
 [ext_resource type="Resource" uid="uid://dwd6csrjulfsk" path="res://world/data/playground_graph.tres" id="9_8iaro"]
+[ext_resource type="Texture2D" uid="uid://2dl5ar0et6xa" path="res://assets/textures/lights/2d_lights_and_shadows_neutral_point_light.webp" id="10_7p7sx"]
 [ext_resource type="Script" uid="uid://b4x16tyyfihmb" path="res://addons/gaea/nodes/renderers/tilemap_renderer.gd" id="10_r4x6t"]
 [ext_resource type="TileSet" uid="uid://cv2d5ftouuwwk" path="res://world/data/world_tile_set.tres" id="11_oakvt"]
 
@@ -19,11 +20,11 @@ camera_attributes = ExtResource("3_is8ov")
 compositor = ExtResource("4_83q53")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.5
+visible = false
 height = 0.36
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+color = Color(0.0212779, 0.0376506, 0.166882, 1)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_83q53")]
 position = Vector2(511, 85)
@@ -50,3 +51,40 @@ tile_map_data = PackedByteArray("AAAAAAMABAABAAEAAAAAAAQABAABAAEAAAAAAAgAAwABAAE
 tile_set = ExtResource("11_oakvt")
 
 [node name="DecoLayer" type="TileMapLayer" parent="WorldLayers"]
+
+[node name="LightTests" type="Node2D" parent="."]
+
+[node name="FlickerLight" type="Node2D" parent="LightTests"]
+position = Vector2(558, 455)
+
+[node name="PointLight2D" type="PointLight2D" parent="LightTests/FlickerLight"]
+texture = ExtResource("10_7p7sx")
+texture_scale = 2.0
+
+[node name="FlickerLight2" type="Node2D" parent="LightTests"]
+position = Vector2(1078, 512)
+
+[node name="PointLight2D" type="PointLight2D" parent="LightTests/FlickerLight2"]
+position = Vector2(0, -11)
+texture = ExtResource("10_7p7sx")
+
+[node name="FlickerLight3" type="Node2D" parent="LightTests"]
+position = Vector2(1444, 512)
+
+[node name="PointLight2D" type="PointLight2D" parent="LightTests/FlickerLight3"]
+position = Vector2(0, -11)
+texture = ExtResource("10_7p7sx")
+
+[node name="FlickerLight4" type="Node2D" parent="LightTests"]
+position = Vector2(1803, 503)
+
+[node name="PointLight2D" type="PointLight2D" parent="LightTests/FlickerLight4"]
+position = Vector2(0, -11)
+texture = ExtResource("10_7p7sx")
+
+[node name="FlickerLight5" type="Node2D" parent="LightTests"]
+position = Vector2(2237, 503)
+
+[node name="PointLight2D" type="PointLight2D" parent="LightTests/FlickerLight5"]
+position = Vector2(0, -11)
+texture = ExtResource("10_7p7sx")
