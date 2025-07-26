@@ -21,6 +21,9 @@ func setLight(state: bool) -> void:
 func toggleLight() -> void:
 	setLight(!is_light_on)
 
+func _process(_delta) -> void:
+	debug()
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -45,3 +48,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func debug() -> void:
+	var msg = "Player Debug:"
+	# var position_on_tilemaplayer = ""
+	msg += "\nPos: [b]%d/%d[/b]" % [self.position.x, self.position.y]
+	msg += "\nLight: [b]%s[/b]" % str(is_light_on)
+
+	%RichTextLabel.text = msg
