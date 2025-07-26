@@ -10,10 +10,12 @@ var is_falling: bool = false
 var is_light_on: bool = false
 var direction: int = 1
 var number_of_jumps = 0
+var tilemap_layer_ground
 
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
 func _ready() -> void:
+	tilemap_layer_ground = get_tree().get_first_node_in_group("tilemaplayers")
 	setLight(false)
 
 func setLight(state: bool) -> void:
@@ -27,8 +29,12 @@ func toggleLight() -> void:
 	setLight(!is_light_on)
 
 func _process(_delta) -> void:
+	# Handle mouse cursor
+	if Engine.is_editor_hint():
+		return # nicht im Editor ausführen
+
 	debug()
-	
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		is_falling = false
@@ -48,10 +54,14 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jetpack
 	if Input.is_action_pressed("secondary_action"):
-		%PlayerBody.get_child(0).get_child(0).emitting = true
+		%PlayerBody.get_child(0).get_node("GPUParticles2D").emitting = true
+		# %PlayerBody.get_child(0).get_node("AudioStreamPlayer2D").emitting = true
+		%PlayerBody.get_child(0).get_node("PointLight2D").enabled = true
 		velocity.y = lerpf(velocity.y, JETPACK_VELOCITY, delta * 0.001 + 0.2)
 	else:
-		%PlayerBody.get_child(0).get_child(0).emitting = false
+		%PlayerBody.get_child(0).get_node("GPUParticles2D").emitting = false
+		# %PlayerBody.get_child(0).get_node("AudioStreamPlayer2D").emitting = false
+		%PlayerBody.get_child(0).get_node("PointLight2D").enabled = false
 
 	# Handle light
 	if Input.is_action_just_pressed("toggle_light"):
@@ -80,13 +90,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func getPositionOnTileMapLayer(player: Player, layer: TileMapLayer) -> Vector2i:
-	var grid_position_adjust = Vector2i(0,1)
+	var grid_position_adjust = Vector2i(0, 1)
 	var tile_coords = layer.local_to_map(layer.to_local(player.global_position)) + grid_position_adjust
 	return tile_coords
 
-
 func debug() -> void:
-	var position_on_tilemaplayer := self.getPositionOnTileMapLayer(self, get_tree().get_first_node_in_group("tilemaplayers"))
+	var position_on_tilemaplayer := self.getPositionOnTileMapLayer(self, tilemap_layer_ground)
 	var msg := "Player Debug:"
 	msg += "\nPos:   [b]%d/%d[/b]" % [self.position.x, self.position.y]
 	msg += "\nGRID:  [b]%d/%d[/b]" % [position_on_tilemaplayer.x, position_on_tilemaplayer.y]
@@ -97,5 +106,4 @@ func debug() -> void:
 	msg += "\nIsOnceiling: [b]%s[/b]" % [str(is_on_ceiling())]
 	msg += "\nIsFalling: [b]%s[/b]" % [str(is_falling)]
 	msg += "\nLight: [b]%s[/b]" % str(is_light_on)
-
-	%RichTextLabel.text = msg
+	%PlayerDebugLabel.text = msg
