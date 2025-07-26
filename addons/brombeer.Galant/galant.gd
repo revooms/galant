@@ -8,11 +8,11 @@ const AUTOLOAD_NAME_EVENTHUB = "BrombeerEventHub"
 
 var autoloads = [
 	{
-		"name": "BrombeerGame",
+		"name": AUTOLOAD_NAME_GAME,
 		"autoload": "res://addons/brombeer.Galant/autoload/game.gd",
 	},
 	{
-		"name": "BrombeerEventHub",
+		"name": AUTOLOAD_NAME_EVENTHUB,
 		"autoload": "res://addons/brombeer.Galant/autoload/eventhub.gd",
 	},
 ]
@@ -33,4 +33,3 @@ func _enable_plugin():
 func _disable_plugin():
 	for i in autoloads:
 		remove_autoload_singleton(i.name)
-

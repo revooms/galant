@@ -6,17 +6,22 @@ const fade_timer = 0.02
 var tilemap_layer_ground
 var mouse_debug_label
 
+@export var world_scene: PackedScene
 @onready var black_fade_screen: ColorRect = $UI/BlackFadeScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not world_scene:
+		push_error("Fatal: 'important_path' wurde nicht gesetzt!")
+		get_tree().quit() # Beendet das Spiel
+
+	load_scene_async(world_scene.resource_path)
 	tilemap_layer_ground = get_tree().get_first_node_in_group("tilemaplayers")
 	mouse_debug_label = %MouseDebugLabel
 	fadeIn()
 	# await get_tree().create_timer(5).timeout
 	# fadeOut()
 	# loadScene()
-	# load_scene_async(load_scene.resource_path)
 	pass
 
 func _process(_delta) -> void:
@@ -26,17 +31,17 @@ func _process(_delta) -> void:
 
 	debugMouseTile()
 
-# func loadScene() -> void:
-# 	get_tree().change_scene_to_packed(load_scene)
-
-# func load_scene_async(path: String) -> void:
-# 	var _loader := ResourceLoader.load_threaded_request(path)
-# 	while ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-# 		await get_tree().process_frame
-# 	var scene := ResourceLoader.load_threaded_get(path)
-# 	if scene:
-# 		var inst = scene.instantiate()
-# 		add_child(inst)
+func load_scene_async(path: String) -> void:
+	var _loader := ResourceLoader.load_threaded_request(path)
+	while ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		await get_tree().process_frame
+	var scene := ResourceLoader.load_threaded_get(path)
+	if scene:
+		var inst = scene.instantiate()
+		var world = get_node("World")
+		inst.position = world.position
+		world.add_child(inst)
+		print("Scene loaded: %s" % path)
 
 func getMouseOverTile() -> Vector2i:
 	var world_pos = get_global_mouse_position()
@@ -50,11 +55,12 @@ func getMouseOverTile() -> Vector2i:
 func debugMouseTile() -> void:
 	var mt = getMouseOverTile()
 	var msg := "Mouse Tile:"
-	var tile = tilemap_layer_ground.get_cell_tile_data(mt)
-	if tile:
-		msg += "\nMouseTile: [b]%d/%d[/b]" % [mt.x, mt.y]
-		msg += "\nTileData:  [b]%s[/b]" % [str(tile)]
-	mouse_debug_label.text = msg
+	if tilemap_layer_ground:
+		var tile = tilemap_layer_ground.get_cell_tile_data(mt)
+		if tile:
+			msg += "\nMouseTile: [b]%d/%d[/b]" % [mt.x, mt.y]
+			msg += "\nTileData:  [b]%s[/b]" % [str(tile)]
+		mouse_debug_label.text = msg
 
 func fadeIn() -> void:
 	# Von Alpha 1.0 → 0.0 (sichtbar → unsichtbar)

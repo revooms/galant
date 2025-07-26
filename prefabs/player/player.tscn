@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sc101os57jc1"]
+[gd_scene load_steps=12 format=3 uid="uid://sc101os57jc1"]
 
 [ext_resource type="Script" uid="uid://ddxoknrqnjpen" path="res://prefabs/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://bnaro682gdav1" path="res://prefabs/camera2d/camera_rig.tscn" id="3_gmlin"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://2dl5ar0et6xa" path="res://assets/textures/lights/2d_lights_and_shadows_neutral_point_light.webp" id="4_lvxji"]
 [ext_resource type="Texture2D" uid="uid://dmrbmmrpricsx" path="res://prefabs/player/smoke.png" id="5_klv5p"]
 [ext_resource type="Material" uid="uid://w14fo5csuhi4" path="res://prefabs/player/smoke_particles.tres" id="6_iylwk"]
+[ext_resource type="Texture2D" uid="uid://duw7b72ogcoxp" path="res://assets/textures/lights/flashlight.png" id="7_ev8v4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klv5p"]
 size = Vector2(30, 62)
@@ -69,10 +70,16 @@ process_material = ExtResource("6_iylwk")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerBody/Jetpack"]
 
 [node name="PointLight2D" type="PointLight2D" parent="PlayerBody/Jetpack"]
-position = Vector2(28, 24)
+position = Vector2(28, 40)
 color = Color(0.608243, 0.301945, 0.174904, 1)
 energy = 2.0
 texture = ExtResource("4_lvxji")
+
+[node name="FlashLight" type="PointLight2D" parent="PlayerBody"]
+visible = false
+position = Vector2(-744, -76)
+texture = ExtResource("7_ev8v4")
+texture_scale = 3.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
