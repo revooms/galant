@@ -1,0 +1,226 @@
+[gd_resource type="Resource" script_class="GaeaGraph" load_steps=8 format=3 uid="uid://dwd6csrjulfsk"]
+
+[ext_resource type="Script" uid="uid://3qsmwhn2sk47" path="res://addons/gaea/resources/gaea_layer.gd" id="1_vpjkq"]
+[ext_resource type="Script" uid="uid://e45byecr4gi6" path="res://addons/gaea/resources/materials/data/tilemap_material.gd" id="2_sqqn3"]
+[ext_resource type="Script" uid="uid://dae6umbqb872e" path="res://addons/gaea/resources/gaea_graph.gd" id="2_wugag"]
+
+[sub_resource type="Resource" id="Resource_sqqn3"]
+script = ExtResource("1_vpjkq")
+enabled = true
+
+[sub_resource type="Resource" id="Resource_mhltv"]
+script = ExtResource("2_sqqn3")
+type = 0
+source_id = 3
+atlas_coord = Vector2i(1, 1)
+alternative_tile = 0
+preview_color = Color(0.0443062, 0.0348916, 0.36262, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
+[sub_resource type="Resource" id="Resource_nvkc4"]
+script = ExtResource("2_sqqn3")
+type = 0
+source_id = 4
+atlas_coord = Vector2i(1, 1)
+alternative_tile = 0
+preview_color = Color(0.0387776, 0.065432, 0.622025, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
+[sub_resource type="Resource" id="Resource_flaww"]
+script = ExtResource("2_sqqn3")
+type = 0
+source_id = 5
+atlas_coord = Vector2i(1, 1)
+alternative_tile = 0
+preview_color = Color(0.064955, 0.605176, 0.0853499, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_wugag")
+layers = Array[ExtResource("1_vpjkq")]([SubResource("Resource_sqqn3")])
+logging = 0
+connections = Array[Dictionary]([{
+"from_node": 5,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 2,
+"to_port": 1
+}, {
+"from_node": 6,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 3,
+"to_port": 1
+}, {
+"from_node": 7,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 4,
+"to_port": 1
+}, {
+"from_node": 1,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 2,
+"to_port": 0
+}, {
+"from_node": 1,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 3,
+"to_port": 0
+}, {
+"from_node": 1,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 4,
+"to_port": 0
+}, {
+"from_node": 2,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 8,
+"to_port": 0
+}, {
+"from_node": 3,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 8,
+"to_port": 1
+}, {
+"from_node": 4,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 8,
+"to_port": 2
+}, {
+"from_node": 8,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 9,
+"to_port": 0
+}, {
+"from_node": 9,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 0,
+"to_port": 0
+}])
+resource_uids = Array[String](["uid://dol7xviglksx4", "uid://cgjyi804j05dy", "uid://djjvx650evm0n", "uid://djjvx650evm0n", "uid://djjvx650evm0n", "uid://cqs1w714pbfql", "uid://cqs1w714pbfql", "uid://cqs1w714pbfql", "uid://d2f6bjkxcn7jl", "uid://d2f6bjkxcn7jl"])
+node_data = Array[Dictionary]([{
+&"arguments": {},
+&"enums": [],
+"name": &"BaseNode",
+"position": Vector2(760, 380),
+"salt": 3355040020
+}, {
+&"arguments": {
+&"frequency": 0.03,
+&"lacunarity": 2.04,
+&"octaves": 3
+},
+&"enums": [1],
+"name": &"_GraphNode_28351",
+"position": Vector2(-740, -180),
+"salt": 481831571
+}, {
+&"arguments": {
+&"range": {
+"max": 0.45,
+"min": 0.0
+}
+},
+&"enums": [],
+"name": &"_GraphNode_28456",
+"position": Vector2(-180, -180),
+"salt": 3904846571
+}, {
+&"arguments": {
+&"range": {
+"max": 0.83,
+"min": 0.58
+}
+},
+&"enums": [],
+"name": &"_GraphNode_28530",
+"position": Vector2(-180, 80),
+"salt": 1947937458
+}, {
+&"arguments": {
+&"range": {
+"max": 1.0,
+"min": 0.7
+}
+},
+&"enums": [],
+"name": &"_GraphNode_28604",
+"position": Vector2(-180, 340),
+"salt": 3359574111
+}, {
+&"arguments": {
+&"name": "MaterialParameter"
+},
+&"enums": [],
+"name": &"_GraphNode_28678",
+"position": Vector2(-480, -140),
+"salt": 1867140394
+}, {
+&"arguments": {
+&"name": "MaterialParameter2"
+},
+&"enums": [],
+"name": &"_GraphNode_28682",
+"position": Vector2(-480, 120),
+"salt": 2286969270
+}, {
+&"arguments": {
+&"name": "MaterialParameter3"
+},
+&"enums": [],
+"name": &"_GraphNode_28686",
+"position": Vector2(-480, 380),
+"salt": 1182859396
+}, {
+&"arguments": {},
+&"enums": [0],
+"name": &"_GraphNode_28696",
+"position": Vector2(220, 60),
+"salt": 4214897792
+}, {
+&"arguments": {},
+&"enums": [0],
+"name": &"_GraphNode_28742",
+"position": Vector2(520, 220),
+"salt": 1590913082
+}])
+parameters = Dictionary[StringName, Variant]({
+&"MaterialParameter": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": "MaterialParameter",
+"type": 24,
+"usage": 4,
+"value": SubResource("Resource_mhltv")
+},
+&"MaterialParameter2": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": "MaterialParameter2",
+"type": 24,
+"usage": 4,
+"value": SubResource("Resource_nvkc4")
+},
+&"MaterialParameter3": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": "MaterialParameter3",
+"type": 24,
+"usage": 4,
+"value": SubResource("Resource_flaww")
+}
+})
+other = {
+&"save_version": 3
+}
+metadata/_custom_type_script = "uid://dae6umbqb872e"
