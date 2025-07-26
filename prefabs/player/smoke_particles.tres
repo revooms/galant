@@ -1,0 +1,28 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=4 format=3 uid="uid://w14fo5csuhi4"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_cjhyx"]
+
+[sub_resource type="Gradient" id="Gradient_p43qh"]
+colors = PackedColorArray(0.868985, 0.868985, 0.868985, 1, 0.00820202, 0.00820202, 0.00820202, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mdtbx"]
+gradient = SubResource("Gradient_p43qh")
+
+[resource]
+lifetime_randomness = 0.43
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_damping_as_friction = true
+angle_min = -362.4
+angle_max = 360.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.01
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_mdtbx")
+alpha_curve = SubResource("CurveTexture_cjhyx")
+turbulence_enabled = true
+turbulence_noise_strength = 0.18
+turbulence_noise_scale = 7.206
+turbulence_noise_speed = Vector3(2, 1, 0)
+turbulence_influence_max = 0.152
+collision_mode = 2

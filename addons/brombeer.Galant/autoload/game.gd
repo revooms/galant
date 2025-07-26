@@ -24,3 +24,4 @@ func setIsReady(state: bool) -> void:
 
 	if state == true:
 		print("Game is ready")
+

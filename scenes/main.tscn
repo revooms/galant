@@ -22,7 +22,10 @@ noise = SubResource("FastNoiseLite_0wfyh")
 script = ExtResource("1_o5qli")
 load_scene = ExtResource("1_sugp2")
 
+[node name="World" type="Node2D" parent="."]
+
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="BlackFadeScreen" type="ColorRect" parent="UI"]
 z_index = 100
@@ -81,3 +84,5 @@ text = "[b]W,A,S,D[/b] - Move
 scroll_following = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Playground" parent="." instance=ExtResource("1_sugp2")]

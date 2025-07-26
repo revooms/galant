@@ -25,6 +25,11 @@ BrombeerEventHub="*res://addons/brombeer.Galant/autoload/eventhub.gd"
 
 enabled=PackedStringArray("res://addons/brombeer.Galant/plugin.cfg", "res://addons/gaea/plugin.cfg")
 
+[global_group]
+
+players=""
+tilemaplayers=""
+
 [input]
 
 up={

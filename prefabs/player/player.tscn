@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://sc101os57jc1"]
+[gd_scene load_steps=11 format=3 uid="uid://sc101os57jc1"]
 
 [ext_resource type="Script" uid="uid://ddxoknrqnjpen" path="res://prefabs/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://bnaro682gdav1" path="res://prefabs/camera2d/camera_rig.tscn" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bc0cqpg1d4mme" path="res://prefabs/player/player_parts.png" id="4_binfn"]
 [ext_resource type="Texture2D" uid="uid://2dl5ar0et6xa" path="res://assets/textures/lights/2d_lights_and_shadows_neutral_point_light.webp" id="4_lvxji"]
+[ext_resource type="Texture2D" uid="uid://dmrbmmrpricsx" path="res://prefabs/player/smoke.png" id="5_klv5p"]
+[ext_resource type="Material" uid="uid://w14fo5csuhi4" path="res://prefabs/player/smoke_particles.tres" id="6_iylwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klv5p"]
-size = Vector2(32, 64)
+size = Vector2(30, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klv5p"]
 atlas = ExtResource("4_binfn")
@@ -16,11 +18,15 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("4_binfn")
 region = Rect2(128, 0, 128, 128)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_binfn"]
+atlas = ExtResource("4_binfn")
+region = Rect2(0, 128, 128, 128)
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
 script = ExtResource("1_8afob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -31)
 shape = SubResource("RectangleShape2D_klv5p")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -32,15 +38,33 @@ position = Vector2(0, -24)
 texture = ExtResource("4_lvxji")
 texture_scale = 2.0
 
-[node name="Head" type="Sprite2D" parent="."]
+[node name="PlayerHead" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -48)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_klv5p")
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="PlayerBody" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_iylwk")
+
+[node name="Jetpack" type="Sprite2D" parent="PlayerBody"]
+unique_name_in_owner = true
+position = Vector2(-4, 0)
+texture = SubResource("AtlasTexture_binfn")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PlayerBody/Jetpack"]
+emitting = false
+amount = 100
+texture = ExtResource("5_klv5p")
+lifetime = 13.47
+preprocess = 2.32
+speed_scale = 32.82
+trail_enabled = true
+trail_lifetime = 4.72
+process_material = ExtResource("6_iylwk")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

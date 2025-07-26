@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6g7hngkyjj3"]
+
+[ext_resource type="Script" uid="uid://bnmjogoptgsj0" path="res://prefabs/flicker_light/flicker_light.gd" id="1_ncwxn"]
+[ext_resource type="Texture2D" uid="uid://2dl5ar0et6xa" path="res://assets/textures/lights/2d_lights_and_shadows_neutral_point_light.webp" id="1_xkp44"]
+
+[node name="FlickerLight" type="Node2D"]
+script = ExtResource("1_ncwxn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("1_xkp44")
+texture_scale = 2.0
