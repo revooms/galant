@@ -3,17 +3,28 @@ extends EditorPlugin
 
 # Replace this value with a PascalCase autoload name, as per the GDScript style guide.
 const ROOT_PATH = "res://addons/brombeer.Galant"
+const AUTOLOAD_PATH = ROOT_PATH + "/autoload"
 const AUTOLOAD_NAME_GAME = "BrombeerGame"
 const AUTOLOAD_NAME_EVENTHUB = "BrombeerEventHub"
+const AUTOLOAD_NAME_DEBUGGLER = "BrombeerDebuggler"
+# const AUTOLOAD_NAME_AUDIOMANAGER = "BrombeerAudioManager"
 
 var autoloads = [
 	{
 		"name": AUTOLOAD_NAME_GAME,
-		"autoload": "res://addons/brombeer.Galant/autoload/game.gd",
+		"autoload": AUTOLOAD_PATH + "/game.gd",
 	},
 	{
 		"name": AUTOLOAD_NAME_EVENTHUB,
-		"autoload": "res://addons/brombeer.Galant/autoload/eventhub.gd",
+		"autoload": AUTOLOAD_PATH + "/eventhub.gd",
+	},
+	# {
+	# 	"name": AUTOLOAD_NAME_AUDIOMANAGER,
+	# 	"autoload": AUTOLOAD_PATH + "/audiomanager.gd",
+	# },
+	{
+		"name": AUTOLOAD_NAME_DEBUGGLER,
+		"autoload": AUTOLOAD_PATH + "/debuggler.gd",
 	},
 ]
 

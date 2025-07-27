@@ -1,10 +1,10 @@
 extends Node
 class_name Game
 
-var title: String = "Untitled Game"
-var version: String = "0.1"
-var author: String = "Unnamed Author"
-var release_date: String = "2025-01-01" # Y-m-d
+var title: String = "Galant"
+var version: String = "0.2"
+var author: String = "brombeer"
+var release_date: String = "2025-07-01" # Y-m-d
 
 var is_ready: bool = false
 
@@ -24,3 +24,19 @@ func setIsReady(state: bool) -> void:
 
 	if state == true:
 		print("Game is ready")
+
+static func getInputEventKey(mapname: String) -> String:
+	# Beispiel: Holt die erste Taste, die der Aktion "ui_accept" zugewiesen ist
+	var events = InputMap.action_get_events(mapname)
+	var key_string
+	for event in events:
+		if event is InputEventKey:
+			var keycode = event.physical_keycode
+			key_string = OS.get_keycode_string(keycode)
+
+	return key_string
+
+static func getDate() -> String:
+	var current_date = Time.get_date_string_from_system()
+	var formatted_date = current_date.format("%Y%m%d")
+	return formatted_date
