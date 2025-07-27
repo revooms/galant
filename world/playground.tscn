@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://cc4gjvu4yf2g2"]
+[gd_scene load_steps=14 format=4 uid="uid://cc4gjvu4yf2g2"]
 
 [ext_resource type="Script" uid="uid://bcbma0lx8x4ji" path="res://world/playground.gd" id="1_jwb06"]
 [ext_resource type="Environment" uid="uid://cosutky1t23ak" path="res://world/environment.tres" id="2_0mms7"]
 [ext_resource type="CameraAttributesPractical" uid="uid://dc13s35ocgybj" path="res://world/camera_attributes_practical.tres" id="3_is8ov"]
-[ext_resource type="Compositor" uid="uid://dhvttx3ewvu3e" path="res://world/compositor.tres" id="4_83q53"]
 [ext_resource type="PackedScene" uid="uid://ciuot6h64jvpp" path="res://prefabs/playerspawn/player_spawn.tscn" id="5_83q53"]
 [ext_resource type="Resource" uid="uid://f0w6u0tnnlr8" path="res://world/data/parallax_background_graph.tres" id="6_urtwq"]
 [ext_resource type="Script" uid="uid://d4feanreabm81" path="res://addons/gaea/nodes/generator.gd" id="8_urtwq"]
@@ -21,10 +20,8 @@ script = ExtResource("1_jwb06")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0mms7")
 camera_attributes = ExtResource("3_is8ov")
-compositor = ExtResource("4_83q53")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 height = 0.36
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -35,6 +32,7 @@ visible = false
 texture = ExtResource("12_8iaro")
 
 [node name="ParallaxTileMapLayersTest" type="Node2D" parent="."]
+visible = false
 
 [node name="GaeaBackgroundGenerator" type="Node" parent="ParallaxTileMapLayersTest"]
 script = ExtResource("8_urtwq")

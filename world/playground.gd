@@ -2,6 +2,12 @@ extends Node2D
 
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var tile_highlighter: Sprite2D = $TileHighlighter
+@onready var directional_light_2d: DirectionalLight2D = $DirectionalLight2D
+@onready var parallax_tile_map_layers_test: Node2D = $ParallaxTileMapLayersTest
+
+@export var show_directional_light: bool = false
+@export var show_canvasmodulate: bool = true
+@export var show_parallax: bool = true
 
 var tilemap
 var mouse_debug_label
@@ -9,7 +15,10 @@ const LAYER := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	canvas_modulate.visible = true
+	canvas_modulate.visible = show_canvasmodulate
+	directional_light_2d.visible = show_directional_light
+	parallax_tile_map_layers_test.visible = show_parallax
+
 	tilemap = get_tree().get_first_node_in_group("tilemaplayers")
 	var tree = get_tree()
 	mouse_debug_label = tree.get("UI/DEBUGPANELS/PanelTopLeft/MarginContainer/Panel/MarginContainer/RichTextLabel")

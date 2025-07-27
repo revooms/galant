@@ -13,20 +13,20 @@ script = ExtResource("1_eqvjh")
 enabled = true
 metadata/_custom_type_script = "uid://3qsmwhn2sk47"
 
-[sub_resource type="Resource" id="Resource_q6p8i"]
-script = ExtResource("2_5wi36")
-type = 1
-terrain_set = 0
-terrain = 1
-preview_color = Color(0.00164849, 0.680716, 0.691046, 1)
-metadata/_custom_type_script = "uid://e45byecr4gi6"
-
 [sub_resource type="Resource" id="Resource_0yxl1"]
 script = ExtResource("2_5wi36")
 type = 1
 terrain_set = 0
 terrain = 0
 preview_color = Color(0.0382313, 0.225615, 0.995116, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
+[sub_resource type="Resource" id="Resource_q6p8i"]
+script = ExtResource("2_5wi36")
+type = 1
+terrain_set = 0
+terrain = 1
+preview_color = Color(0.00164849, 0.680716, 0.691046, 1)
 metadata/_custom_type_script = "uid://e45byecr4gi6"
 
 [resource]
