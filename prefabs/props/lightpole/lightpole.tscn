@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkvpuw26uwm5k"]
+[gd_scene load_steps=6 format=3 uid="uid://bkvpuw26uwm5k"]
 
 [ext_resource type="Script" uid="uid://dvetbxv2suo34" path="res://prefabs/props/lightpole/lightpole.gd" id="1_3a2og"]
 [ext_resource type="PackedScene" uid="uid://dn6g7hngkyjj3" path="res://prefabs/flicker_light/flicker_light.tscn" id="2_iimb7"]
@@ -8,6 +8,9 @@
 radius = 15.0
 height = 80.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iv1vo"]
+polygon = PackedVector2Array(-15, 0, -15, -77, 16, -77, 16, 0)
+
 [node name="Lightpole" type="RigidBody2D"]
 script = ExtResource("1_3a2og")
 
@@ -16,7 +19,7 @@ position = Vector2(0, -40)
 shape = SubResource("CapsuleShape2D_iv1vo")
 
 [node name="FlickerLight" parent="." instance=ExtResource("2_iimb7")]
-position = Vector2(0, -72)
+position = Vector2(0, -85)
 intensity = 0.618
 shadowintensity = 0.47
 
@@ -31,3 +34,9 @@ uv = PackedVector2Array(2, 0.5, -240, 37.5, -165, 209.5, 152, 209.5, 285, 24.5)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
 texture = ExtResource("3_iv1vo")
+offset = Vector2(0, 24)
+region_enabled = true
+region_rect = Rect2(56, 56, 16, 72)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_iv1vo")
