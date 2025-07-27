@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="GalantEditorPlugin" load_steps=2 format=3 uid="uid://b7uodmp28fhds"]
+
+[ext_resource type="Script" uid="uid://d0blelonf455j" path="res://addons/revooms.Galant/resources/GalantEditorPlugin.gd" id="1_a2nf1"]
+
+[resource]
+script = ExtResource("1_a2nf1")
