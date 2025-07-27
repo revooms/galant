@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://nfur243kf2vh"]
+
+[ext_resource type="Script" uid="uid://bjs2x7urn8dyv" path="res://prefabs/props/walllight/walllight.gd" id="1_5vhg0"]
+[ext_resource type="PackedScene" uid="uid://dn6g7hngkyjj3" path="res://prefabs/flicker_light/flicker_light.tscn" id="2_xttlj"]
+
+[node name="Walllight" type="Node2D"]
+script = ExtResource("1_5vhg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="FlickerLight" parent="." instance=ExtResource("2_xttlj")]
+intensity = 0.618
+shadowintensity = 0.389
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-141, -87.5147)
+scale = Vector2(1, 1.40196)
+color = Color(0.128018, 0.195474, 0.146815, 1)
+polygon = PackedVector2Array(-10, -94.5, -85, 34.5, -6, 211.5, 385, 196.5, 407, -65.5)
+uv = PackedVector2Array(2, 0.5, -240, 37.5, -165, 209.5, 152, 209.5, 285, 24.5)

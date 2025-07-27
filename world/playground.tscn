@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cc4gjvu4yf2g2"]
+[gd_scene load_steps=15 format=4 uid="uid://cc4gjvu4yf2g2"]
 
 [ext_resource type="Script" uid="uid://bcbma0lx8x4ji" path="res://world/playground.gd" id="1_jwb06"]
 [ext_resource type="Environment" uid="uid://cosutky1t23ak" path="res://world/environment.tres" id="2_0mms7"]
@@ -13,6 +13,7 @@
 [ext_resource type="TileSet" uid="uid://cv2d5ftouuwwk" path="res://world/data/world_tile_set.tres" id="11_oakvt"]
 [ext_resource type="Texture2D" uid="uid://iyk6itmamt0w" path="res://assets/tilesets/highlight_tiles.png" id="12_8iaro"]
 [ext_resource type="Script" uid="uid://6b57poilg1wa" path="res://addons/revooms.Galant/resources/galant_node2d_rotator.gd" id="13_r4x6t"]
+[ext_resource type="PackedScene" uid="uid://bkvpuw26uwm5k" path="res://prefabs/props/lightpole/lightpole.tscn" id="14_oakvt"]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_jwb06")
@@ -132,3 +133,8 @@ metadata/_custom_type_script = "uid://6b57poilg1wa"
 [node name="FlickerLight" parent="LightTests/RotatingLight/Pivot" instance=ExtResource("10_7p7sx")]
 position = Vector2(121, 0)
 texture_scale = 2.0
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Lightpole" parent="Props" instance=ExtResource("14_oakvt")]
+position = Vector2(889, 316)

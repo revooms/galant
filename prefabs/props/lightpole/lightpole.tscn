@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkvpuw26uwm5k"]
+
+[ext_resource type="Script" uid="uid://dvetbxv2suo34" path="res://prefabs/props/lightpole/lightpole.gd" id="1_3a2og"]
+[ext_resource type="PackedScene" uid="uid://dn6g7hngkyjj3" path="res://prefabs/flicker_light/flicker_light.tscn" id="2_iimb7"]
+[ext_resource type="Texture2D" uid="uid://uxc10k1yaer3" path="res://prefabs/props/lightpole/lightpole.png" id="3_iv1vo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iv1vo"]
+radius = 15.0
+height = 80.0
+
+[node name="Lightpole" type="RigidBody2D"]
+script = ExtResource("1_3a2og")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_iv1vo")
+
+[node name="FlickerLight" parent="." instance=ExtResource("2_iimb7")]
+position = Vector2(0, -72)
+intensity = 0.618
+shadowintensity = 0.47
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(-140, -93)
+scale = Vector2(1, 1.40196)
+color = Color(0.128018, 0.195474, 0.146815, 1)
+polygon = PackedVector2Array(-50, -91.6469, -54, 254.297, 406, 260.004, 407, -65.5)
+uv = PackedVector2Array(2, 0.5, -240, 37.5, -165, 209.5, 152, 209.5, 285, 24.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("3_iv1vo")
