@@ -26,6 +26,9 @@ atlas = ExtResource("4_binfn")
 region = Rect2(0, 128, 128, 128)
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
+z_index = 100
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_8afob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -120,3 +123,19 @@ text = "Player Debug"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="CheckSurroundings" type="Node2D" parent="."]
+
+[node name="RayUp" type="RayCast2D" parent="CheckSurroundings"]
+position = Vector2(0, -65)
+target_position = Vector2(0, -50)
+
+[node name="RayDown" type="RayCast2D" parent="CheckSurroundings"]
+
+[node name="RayLeft" type="RayCast2D" parent="CheckSurroundings"]
+position = Vector2(-16, -33)
+target_position = Vector2(-50, 0)
+
+[node name="RayRight" type="RayCast2D" parent="CheckSurroundings"]
+position = Vector2(16, -33)
+target_position = Vector2(50, 0)
