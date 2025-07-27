@@ -1,5 +1,5 @@
 extends Node
-class_name Game
+# class_name Galant
 
 var title: String = "Galant"
 var version: String = "0.2"
@@ -25,7 +25,7 @@ func setIsReady(state: bool) -> void:
 	if state == true:
 		print("Game is ready")
 
-static func getInputEventKey(mapname: String) -> String:
+func getInputEventKey(mapname: String) -> String:
 	# Beispiel: Holt die erste Taste, die der Aktion "ui_accept" zugewiesen ist
 	var events = InputMap.action_get_events(mapname)
 	var key_string
@@ -36,7 +36,11 @@ static func getInputEventKey(mapname: String) -> String:
 
 	return key_string
 
-static func getDate() -> String:
-	var current_date = Time.get_date_string_from_system()
-	var formatted_date = current_date.format("%Y%m%d")
+func getDate() -> String:
+	var current_date = Time.get_date_dict_from_system()
+	var formatted_date = "%d%02d%02d" % [current_date.year, current_date.month, current_date.day]
 	return formatted_date
+
+func getMainScene() -> String:
+	var start_scene_path = ProjectSettings.get("application/run/main_scene")
+	return start_scene_path

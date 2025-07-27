@@ -17,19 +17,19 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-BrombeerGame="*res://addons/brombeer.Galant/autoload/game.gd"
-BrombeerEventHub="*res://addons/brombeer.Galant/autoload/eventhub.gd"
-BrombeerDebuggler="*res://addons/brombeer.Galant/autoload/debuggler.gd"
+Galant="*res://addons/revooms.Galant/autoload/Galant.gd"
+GalantAudioManager="*res://addons/revooms.GalantAudioManager/autoload/GalantAudioManager.gd"
+GalantDebugger="*res://addons/revooms.GalantDebugger/autoload/GalantDebugger.gd"
+GalantEventHub="*res://addons/revooms.GalantEventHub/autoload/GalantEventHub.gd"
+GalantUI="*res://addons/revooms.GalantUI/autoload/GalantUI.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/brombeer.Galant/plugin.cfg", "res://addons/gaea/plugin.cfg")
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/revooms.Galant/plugin.cfg", "res://addons/revooms.GalantAudioManager/plugin.cfg", "res://addons/revooms.GalantDebugger/plugin.cfg", "res://addons/revooms.GalantEventHub/plugin.cfg", "res://addons/revooms.GalantUI/plugin.cfg")
 
 [global_group]
 

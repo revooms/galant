@@ -1,5 +1,7 @@
 extends Node
-class_name Debuggler
+
+signal exitrequested
+signal maingameready
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,10 +11,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-static func assembleMessage(msg: String) -> String:
-	var formatted_message = "%s: %s" % [Game.getDate(), msg]
-	return formatted_message
-
-
-static func line(msg: String) -> void:
-	print(assembleMessage(msg))
+func trigger(signalName: String) -> void:
+	emit_signal(signalName)
+	GalantDebugger.line(self, "Signal emitted: %s" % [signalName])

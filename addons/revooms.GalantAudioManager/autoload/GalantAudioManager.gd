@@ -7,16 +7,27 @@ extends Node
 # AudioStreamPlayer
 var sound_player: AudioStreamPlayer = null
 
-func _ready():
-	sound_player = get_node("sound_player")
-	sound_player.volume_db = 0.0  # Initialisierung
-	sound_player.autoplay = false
+func _on_maingameready() -> void:
+	print(Galant.getMainScene())
+	print(get_tree_string_pretty())
+	print(get_tree())
 
-	# Beispiel: Kategorien und Volumes füllen
-	sound_categories["player_flashlight"] = ["res://assets/audio/fx/flashlight_on.wav", "res://assets/audio/fx/flashlight_off.wav"]
-	category_volumes["player_flashlight"] = 0.5
+	# sound_player = get_tree().get_node("AudioStreamPlayer")
+	# sound_player.volume_db = 0.0  # Initialisierung
+	# sound_player.autoplay = false
+
+	# # Beispiel: Kategorien und Volumes füllen
+	# sound_categories["player_flashlight"] = ["res://assets/audio/fx/flashlight_on.wav", "res://assets/audio/fx/flashlight_off.wav"]
+	# category_volumes["player_flashlight"] = 0.5
 	# sound_categories["environment"] = ["res://sounds/environment_wind.wav", "res://sounds/environment_rain.wav"]
 	# category_volumes["environment"] = 0.2
+
+func _ready():
+	GalantEventHub.maingameready.connect(_on_maingameready)
+
+func play(identifier: String) -> void:
+	# Parse the identifier: CATEGORY.SOUNDNAME
+	pass
 
 func play_sound(category: String, sound_name: String):
 	if not is_instance_valid(sound_player):
