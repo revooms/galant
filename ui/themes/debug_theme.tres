@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://cg1gg2gvibn53"]
 
 [resource]
-default_font_size = 10
+default_font_size = 12
 RichTextLabel/font_sizes/bold_font_size = 11
 RichTextLabel/font_sizes/normal_font_size = 10
