@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://wbgecavwkgks"]
+[gd_scene load_steps=8 format=3 uid="uid://wbgecavwkgks"]
 
 [ext_resource type="Script" uid="uid://c1nrekjj2h3gt" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cc4gjvu4yf2g2" path="res://world/playground.tscn" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bxwepqnh68ob2" path="res://scenes/ui.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://vrx01bqrp6q7" path="res://scenes/audio_manager.gd" id="4_jyhfs"]
 
 [sub_resource type="Gradient" id="Gradient_o5qli"]
 colors = PackedColorArray(0, 0, 0, 1, 0.345413, 0.290177, 0.462402, 1)
@@ -25,8 +26,9 @@ world_scene = ExtResource("1_sugp2")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("panels")]
 script = ExtResource("3_sugp2")
+panels = [NodePath("DEBUGPANELS/PanelTopLeft"), NodePath("DEBUGPANELS/PanelTopRight"), NodePath("DEBUGPANELS/PanelBottomLeft"), NodePath("DEBUGPANELS/PanelBottomRight")]
 
 [node name="BlackFadeScreen" type="ColorRect" parent="UI"]
 visible = false
@@ -89,14 +91,20 @@ scroll_following = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="UI"]
-custom_minimum_size = Vector2(220, 0)
+[node name="DEBUGPANELS" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelTopLeft" type="Control" parent="UI/DEBUGPANELS"]
+custom_minimum_size = Vector2(220, 39)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 220.0
-offset_bottom = 139.0
+offset_bottom = 39.0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelTopLeft"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,10 +116,10 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Panel" type="Panel" parent="UI/Control/MarginContainer"]
+[node name="Panel" type="Panel" parent="UI/DEBUGPANELS/PanelTopLeft/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelTopLeft/MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,10 +131,159 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="MouseDebugLabel" type="RichTextLabel" parent="UI/Control/MarginContainer/Panel/MarginContainer"]
-unique_name_in_owner = true
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelTopLeft/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 12
 bbcode_enabled = true
-text = "[b]Mouse Tile[/b]"
+text = "RichTextLabel"
+fit_content = true
+
+[node name="PanelTopRight" type="Control" parent="UI/DEBUGPANELS"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1660.0
+offset_right = 1880.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelTopRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="UI/DEBUGPANELS/PanelTopRight/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelTopRight/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelTopRight/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
+
+[node name="PanelBottomLeft" type="Control" parent="UI/DEBUGPANELS"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 1000.0
+offset_right = 220.0
+offset_bottom = 1040.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelBottomLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="UI/DEBUGPANELS/PanelBottomLeft/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelBottomLeft/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelBottomLeft/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
+
+[node name="PanelBottomRight" type="Control" parent="UI/DEBUGPANELS"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1660.0
+offset_top = 1000.0
+offset_right = 1880.0
+offset_bottom = 1040.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelBottomRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="UI/DEBUGPANELS/PanelBottomRight/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DEBUGPANELS/PanelBottomRight/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelBottomRight/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
+
+[node name="AudioManager" type="Node2D" parent="."]
+script = ExtResource("4_jyhfs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]

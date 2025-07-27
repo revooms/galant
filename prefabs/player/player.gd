@@ -12,7 +12,8 @@ var direction: int = 1
 var number_of_jumps = 0
 var tilemap_layer_ground
 
-@onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var light := $Light
+@onready var AudioManager = $"/root/Main/AudioManager"
 
 func _ready() -> void:
 	tilemap_layer_ground = get_tree().get_first_node_in_group("tilemaplayers")
@@ -21,9 +22,11 @@ func _ready() -> void:
 func setLight(state: bool) -> void:
 	is_light_on = state
 	if is_light_on == true:
-		point_light_2d.enabled = true
+		AudioManager.play_sound('player_flashlight', "res://assets/audio/fx/flashlight_on.ogg")
+		light.enable()
 	else:
-		point_light_2d.enabled = false
+		AudioManager.play_sound('player_flashlight', "res://assets/audio/fx/flashlight_off.ogg")
+		light.disable()
 
 func toggleLight() -> void:
 	setLight(!is_light_on)
@@ -56,12 +59,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("secondary_action"):
 		%PlayerBody.get_child(0).get_node("GPUParticles2D").emitting = true
 		# %PlayerBody.get_child(0).get_node("AudioStreamPlayer2D").emitting = true
-		%PlayerBody.get_child(0).get_node("PointLight2D").enabled = true
+		%PlayerBody.get_child(0).get_node("Light").enable()
 		velocity.y = lerpf(velocity.y, JETPACK_VELOCITY, delta * 0.001 + 0.2)
 	else:
 		%PlayerBody.get_child(0).get_node("GPUParticles2D").emitting = false
 		# %PlayerBody.get_child(0).get_node("AudioStreamPlayer2D").emitting = false
-		%PlayerBody.get_child(0).get_node("PointLight2D").enabled = false
+		%PlayerBody.get_child(0).get_node("Light").disable()
 
 	# Handle light
 	if Input.is_action_just_pressed("toggle_light"):

@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://sc101os57jc1"]
 
 [ext_resource type="Script" uid="uid://ddxoknrqnjpen" path="res://prefabs/player/player.gd" id="1_8afob"]
+[ext_resource type="PackedScene" uid="uid://dn6g7hngkyjj3" path="res://prefabs/flicker_light/flicker_light.tscn" id="3_ev8v4"]
 [ext_resource type="PackedScene" uid="uid://bnaro682gdav1" path="res://prefabs/camera2d/camera_rig.tscn" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bc0cqpg1d4mme" path="res://prefabs/player/player_parts.png" id="4_binfn"]
-[ext_resource type="Texture2D" uid="uid://2dl5ar0et6xa" path="res://assets/textures/lights/2d_lights_and_shadows_neutral_point_light.webp" id="4_lvxji"]
 [ext_resource type="Texture2D" uid="uid://dmrbmmrpricsx" path="res://prefabs/player/smoke.png" id="5_klv5p"]
 [ext_resource type="Material" uid="uid://w14fo5csuhi4" path="res://prefabs/player/smoke_particles.tres" id="6_iylwk"]
 [ext_resource type="Texture2D" uid="uid://duw7b72ogcoxp" path="res://assets/textures/lights/flashlight.png" id="7_ev8v4"]
@@ -34,10 +34,7 @@ shape = SubResource("RectangleShape2D_klv5p")
 
 [node name="CameraRig" parent="." instance=ExtResource("3_gmlin")]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -24)
-texture = ExtResource("4_lvxji")
-texture_scale = 2.0
+[node name="Light" parent="." instance=ExtResource("3_ev8v4")]
 
 [node name="PlayerHead" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -69,11 +66,10 @@ process_material = ExtResource("6_iylwk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerBody/Jetpack"]
 
-[node name="PointLight2D" type="PointLight2D" parent="PlayerBody/Jetpack"]
-position = Vector2(28, 40)
-color = Color(0.608243, 0.301945, 0.174904, 1)
-energy = 2.0
-texture = ExtResource("4_lvxji")
+[node name="Light" parent="PlayerBody/Jetpack" instance=ExtResource("3_ev8v4")]
+position = Vector2(4, 64)
+scale = Vector2(4, 4)
+color = Color(0.584935, 0.321228, 0.179698, 1)
 
 [node name="FlashLight" type="PointLight2D" parent="PlayerBody"]
 visible = false

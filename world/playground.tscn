@@ -26,7 +26,11 @@ visible = false
 height = 0.36
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.00536514, 0.0120862, 0.0198547, 1)
+color = Color(0.14367, 0.221992, 0.284759, 1)
+
+[node name="TileHighlighter" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_8iaro")
 
 [node name="ParallaxTileMapLayersTest" type="Node2D" parent="."]
 
@@ -92,21 +96,22 @@ tile_set = ExtResource("11_oakvt")
 [node name="LightTests" type="Node2D" parent="."]
 
 [node name="FlickerLight" parent="LightTests" instance=ExtResource("10_7p7sx")]
-position = Vector2(558, -83)
+position = Vector2(160, 48)
 color = Color(0.554409, 0.449175, 0.73969, 1)
 intensity = 3.342
+frequency = 0.0
 
 [node name="FlickerLight2" parent="LightTests" instance=ExtResource("10_7p7sx")]
-position = Vector2(1070, -83)
+position = Vector2(721, -22)
 color = Color(0.633068, 0.156352, 0.0781368, 1)
+frequency = 0.5
 
 [node name="FlickerLight3" parent="LightTests" instance=ExtResource("10_7p7sx")]
 position = Vector2(1590, -83)
 color = Color(0.168472, 0.147809, 0.667623, 1)
+frequency = 0.0
 
 [node name="FlickerLight4" parent="LightTests" instance=ExtResource("10_7p7sx")]
-position = Vector2(2329, -52)
+position = Vector2(8060, -52)
 intensity = 1.946
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("12_8iaro")
+frequency = 0.0

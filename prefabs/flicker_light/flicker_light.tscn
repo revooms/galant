@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn6g7hngkyjj3"]
+[gd_scene load_steps=4 format=3 uid="uid://dn6g7hngkyjj3"]
 
 [ext_resource type="Script" uid="uid://bnmjogoptgsj0" path="res://prefabs/flicker_light/flicker_light.gd" id="1_ncwxn"]
 [ext_resource type="Texture2D" uid="uid://2dl5ar0et6xa" path="res://assets/textures/lights/2d_lights_and_shadows_neutral_point_light.webp" id="1_xkp44"]
 
+[sub_resource type="Curve" id="Curve_ncwxn"]
+_data = [Vector2(0.00566573, 0.958244), 0.0, 0.0, 0, 0, Vector2(0.886686, 0.0807351), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="FlickerLight" type="Node2D"]
 script = ExtResource("1_ncwxn")
+texture_scale = 2.0
+intensity = 2.0
+curve = SubResource("Curve_ncwxn")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.960784, 0.960784, 0.960784, 1)
+energy = 2.0
+texture = ExtResource("1_xkp44")
+texture_scale = 2.0
+
+[node name="PointLight2D-Shadow" type="PointLight2D" parent="."]
+color = Color(0.960784, 0.960784, 0.960784, 1)
+energy = 0.2
+shadow_enabled = true
 texture = ExtResource("1_xkp44")
 texture_scale = 2.0
