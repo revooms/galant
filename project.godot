@@ -29,7 +29,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/revooms.Galant/plugin.cfg", "res://addons/revooms.GalantAudioManager/plugin.cfg", "res://addons/revooms.GalantDebugger/plugin.cfg", "res://addons/revooms.GalantEventHub/plugin.cfg", "res://addons/revooms.GalantUI/plugin.cfg")
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/revooms.Galant/plugin.cfg", "res://addons/revooms.GalantAudioManager/plugin.cfg", "res://addons/revooms.GalantDebugger/plugin.cfg", "res://addons/revooms.GalantEventHub/plugin.cfg", "res://addons/revooms.GalantUI/plugin.cfg")
 
 [global_group]
 
