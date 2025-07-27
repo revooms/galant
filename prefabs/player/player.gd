@@ -13,7 +13,7 @@ var number_of_jumps = 0
 var tilemap_layer_ground
 
 @onready var light := $Light
-@onready var AudioManager = $"/root/Main/AudioManager"
+@onready var jetpack_audio_stream_player_2d: AudioStreamPlayer2D = $PlayerBody/Jetpack/AudioStreamPlayer2D
 
 func _ready() -> void:
 	tilemap_layer_ground = get_tree().get_first_node_in_group("tilemaplayers")
@@ -22,10 +22,10 @@ func _ready() -> void:
 func setLight(state: bool) -> void:
 	is_light_on = state
 	if is_light_on == true:
-		AudioManager.play_sound('player_flashlight', "res://assets/audio/fx/flashlight_on.ogg")
+		GalantAudioManager.play('player_flashlight.on')
 		light.enable()
 	else:
-		AudioManager.play_sound('player_flashlight', "res://assets/audio/fx/flashlight_off.ogg")
+		GalantAudioManager.play('player_flashlight.off')
 		light.disable()
 
 func toggleLight() -> void:
@@ -61,10 +61,12 @@ func _physics_process(delta: float) -> void:
 		# %PlayerBody.get_child(0).get_node("AudioStreamPlayer2D").emitting = true
 		%PlayerBody.get_child(0).get_node("Light").enable()
 		velocity.y = lerpf(velocity.y, JETPACK_VELOCITY, delta * 0.001 + 0.2)
+		jetpack_audio_stream_player_2d.play()
 	else:
 		%PlayerBody.get_child(0).get_node("GPUParticles2D").emitting = false
 		# %PlayerBody.get_child(0).get_node("AudioStreamPlayer2D").emitting = false
 		%PlayerBody.get_child(0).get_node("Light").disable()
+		jetpack_audio_stream_player_2d.stop()
 
 	# Handle light
 	if Input.is_action_just_pressed("toggle_light"):

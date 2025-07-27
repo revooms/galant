@@ -12,6 +12,7 @@ var mouse_debug_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GalantEventHub.trigger("maingameready")
 	if not world_scene:
 		push_error("Fatal: 'important_path' wurde nicht gesetzt!")
 		get_tree().quit() # Beendet das Spiel
@@ -57,25 +58,25 @@ func showMovementHelp() -> void:
 
 	var movements: Array
 	for mode in ["up", "down", "left", "right"]:
-		key_string = Game.getInputEventKey(mode)
+		key_string = Galant.getInputEventKey(mode)
 		movements.append(key_string)
 
 	_msg += "Move: %s" % [",".join(movements)]
 
 	mapname = "toggle_light"
-	key_string = Game.getInputEventKey(mapname)
+	key_string = Galant.getInputEventKey(mapname)
 	_msg += "%s: %s" % [mapname, key_string]
 
 	mapname = "jump"
-	key_string = Game.getInputEventKey(mapname)
+	key_string = Galant.getInputEventKey(mapname)
 	_msg += "%s: %s" % [mapname, key_string]
 
 	mapname = "crouch"
-	key_string = Game.getInputEventKey(mapname)
+	key_string = Galant.getInputEventKey(mapname)
 	_msg += "%s: %s" % [mapname, key_string]
 
 	mapname = "sprint"
-	key_string = Game.getInputEventKey(mapname)
+	key_string = Galant.getInputEventKey(mapname)
 	_msg += "%s: %s" % [mapname, key_string]
 
 	pass

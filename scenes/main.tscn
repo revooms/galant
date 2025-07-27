@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1nrekjj2h3gt" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cc4gjvu4yf2g2" path="res://world/playground.tscn" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bxwepqnh68ob2" path="res://scenes/ui.gd" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://vrx01bqrp6q7" path="res://scenes/audio_manager.gd" id="4_jyhfs"]
+[ext_resource type="Theme" uid="uid://cg1gg2gvibn53" path="res://ui/themes/debug_theme.tres" id="4_jyhfs"]
 
 [sub_resource type="Gradient" id="Gradient_o5qli"]
 colors = PackedColorArray(0, 0, 0, 1, 0.345413, 0.290177, 0.462402, 1)
@@ -133,8 +133,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelTopLeft/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 12
+theme = ExtResource("4_jyhfs")
 bbcode_enabled = true
 text = "RichTextLabel"
 fit_content = true
@@ -179,8 +178,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelTopRight/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 12
+theme = ExtResource("4_jyhfs")
 bbcode_enabled = true
 text = "RichTextLabel"
 fit_content = true
@@ -225,8 +223,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelBottomLeft/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 12
+theme = ExtResource("4_jyhfs")
 bbcode_enabled = true
 text = "RichTextLabel"
 fit_content = true
@@ -277,13 +274,12 @@ theme_override_constants/margin_bottom = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DEBUGPANELS/PanelBottomRight/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 12
+theme = ExtResource("4_jyhfs")
 bbcode_enabled = true
 text = "RichTextLabel"
 fit_content = true
 
 [node name="AudioManager" type="Node2D" parent="."]
-script = ExtResource("4_jyhfs")
+unique_name_in_owner = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]
