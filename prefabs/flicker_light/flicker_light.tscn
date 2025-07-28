@@ -17,7 +17,7 @@ energy = 0.7
 texture = ExtResource("1_xkp44")
 
 [node name="PointLight2D-Shadow" type="PointLight2D" parent="."]
-color = Color(0.151276, 0.151276, 0.151276, 1)
+color = Color(0.960784, 0.960784, 0.960784, 1)
 energy = 0.2
 shadow_enabled = true
 texture = ExtResource("1_xkp44")

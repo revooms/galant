@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GaeaGraph" load_steps=8 format=3 uid="uid://dwd6csrjulfsk"]
+[gd_resource type="Resource" script_class="GaeaGraph" load_steps=10 format=3 uid="uid://dwd6csrjulfsk"]
 
 [ext_resource type="Script" uid="uid://3qsmwhn2sk47" path="res://addons/gaea/resources/gaea_layer.gd" id="1_vpjkq"]
 [ext_resource type="Script" uid="uid://e45byecr4gi6" path="res://addons/gaea/resources/materials/data/tilemap_material.gd" id="2_sqqn3"]
@@ -7,6 +7,11 @@
 [sub_resource type="Resource" id="Resource_sqqn3"]
 script = ExtResource("1_vpjkq")
 enabled = true
+
+[sub_resource type="Resource" id="Resource_wugag"]
+script = ExtResource("1_vpjkq")
+enabled = true
+metadata/_custom_type_script = "uid://3qsmwhn2sk47"
 
 [sub_resource type="Resource" id="Resource_mhltv"]
 script = ExtResource("2_sqqn3")
@@ -35,10 +40,18 @@ alternative_tile = 0
 preview_color = Color(0.064955, 0.605176, 0.0853499, 1)
 metadata/_custom_type_script = "uid://e45byecr4gi6"
 
+[sub_resource type="Resource" id="Resource_fxm0x"]
+script = ExtResource("2_sqqn3")
+type = 1
+terrain_set = 0
+terrain = 2
+preview_color = Color(0.901352, 0.383803, 0.951951, 1)
+metadata/_custom_type_script = "uid://e45byecr4gi6"
+
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_wugag")
-layers = Array[ExtResource("1_vpjkq")]([SubResource("Resource_sqqn3")])
+layers = Array[ExtResource("1_vpjkq")]([SubResource("Resource_sqqn3"), SubResource("Resource_wugag")])
 logging = 0
 connections = Array[Dictionary]([{
 "from_node": 5,
@@ -106,13 +119,37 @@ connections = Array[Dictionary]([{
 "keep_alive": false,
 "to_node": 0,
 "to_port": 0
+}, {
+"from_node": 10,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 0,
+"to_port": 1
+}, {
+"from_node": 11,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 10,
+"to_port": 3
+}, {
+"from_node": 13,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 11,
+"to_port": 1
+}, {
+"from_node": 12,
+"from_port": 0,
+"keep_alive": false,
+"to_node": 11,
+"to_port": 0
 }])
-resource_uids = Array[String](["uid://dol7xviglksx4", "uid://cgjyi804j05dy", "uid://djjvx650evm0n", "uid://djjvx650evm0n", "uid://djjvx650evm0n", "uid://cqs1w714pbfql", "uid://cqs1w714pbfql", "uid://cqs1w714pbfql", "uid://d2f6bjkxcn7jl", "uid://d2f6bjkxcn7jl"])
+resource_uids = Array[String](["uid://dol7xviglksx4", "uid://cgjyi804j05dy", "uid://djjvx650evm0n", "uid://djjvx650evm0n", "uid://djjvx650evm0n", "uid://cqs1w714pbfql", "uid://cqs1w714pbfql", "uid://cqs1w714pbfql", "uid://d2f6bjkxcn7jl", "uid://d2f6bjkxcn7jl", "uid://d2f6bjkxcn7jl", "uid://djjvx650evm0n", "uid://cgjyi804j05dy", "uid://cqs1w714pbfql"])
 node_data = Array[Dictionary]([{
 &"arguments": {},
 &"enums": [],
 "name": &"BaseNode",
-"position": Vector2(760, 380),
+"position": Vector2(980, 500),
 "salt": 3355040020
 }, {
 &"arguments": {
@@ -193,6 +230,37 @@ node_data = Array[Dictionary]([{
 "name": &"_GraphNode_28742",
 "position": Vector2(520, 220),
 "salt": 1590913082
+}, {
+&"arguments": {},
+&"enums": [0],
+"name": &"_GraphNode_80136",
+"position": Vector2(720, 600),
+"salt": 2665630755
+}, {
+&"arguments": {
+&"range": {
+"max": 0.82,
+"min": 0.42
+}
+},
+&"enums": [],
+"name": &"_GraphNode_80180",
+"position": Vector2(220, 660),
+"salt": 275674630
+}, {
+&"arguments": {},
+&"enums": [1],
+"name": &"_GraphNode_80255",
+"position": Vector2(-420, 560),
+"salt": 2555657266
+}, {
+&"arguments": {
+&"name": "OvergroundMaterial"
+},
+&"enums": [],
+"name": &"_GraphNode_80356",
+"position": Vector2(-220, 840),
+"salt": 2293993044
 }])
 parameters = Dictionary[StringName, Variant]({
 &"MaterialParameter": {
@@ -218,6 +286,14 @@ parameters = Dictionary[StringName, Variant]({
 "type": 24,
 "usage": 4,
 "value": SubResource("Resource_flaww")
+},
+&"OvergroundMaterial": {
+"hint": 17,
+"hint_string": "GaeaMaterial",
+"name": "OvergroundMaterial",
+"type": 24,
+"usage": 4,
+"value": SubResource("Resource_fxm0x")
 }
 })
 other = {

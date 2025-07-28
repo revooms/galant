@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/revooms.
 
 players=""
 tilemaplayers=""
+flashlight=""
 
 [input]
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://x7da3c0b0dpu"]
+
+[ext_resource type="Script" uid="uid://ck6l33vkg8nm7" path="res://prefabs/props/flashlight/flashlight.gd" id="1_lkph2"]
+[ext_resource type="Texture2D" uid="uid://duw7b72ogcoxp" path="res://assets/textures/lights/flashlight.png" id="2_d8r3m"]
+[ext_resource type="Texture2D" uid="uid://bs4sd2npk5y36" path="res://assets/textures/lights/pointlight.png" id="3_iyolg"]
+
+[node name="Flashlight" type="Node2D"]
+script = ExtResource("1_lkph2")
+flashlight_energy = 1.01
+flashlight_texture = ExtResource("2_d8r3m")
+ambientlight_texture = ExtResource("3_iyolg")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(-271, -248)
+color = Color(0.140835, 0.256215, 0.133973, 1)
+polygon = PackedVector2Array(1, -1, 543, -1, 547, 500, -2, 501)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="FlashLight" type="PointLight2D" parent="." groups=["flashlight"]]
+position = Vector2(480, 0)
+energy = 1.01
+texture = ExtResource("2_d8r3m")
+texture_scale = 2.0
+
+[node name="FlashLightShadow" type="PointLight2D" parent="." groups=["flashlight"]]
+position = Vector2(480, 0)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("2_d8r3m")
+texture_scale = 2.0
+
+[node name="AmbientLight" type="PointLight2D" parent="." groups=["flashlight"]]
+energy = 0.5
+texture = ExtResource("3_iyolg")
+texture_scale = 5.0
+
+[node name="AmbientLightShadow" type="PointLight2D" parent="." groups=["flashlight"]]
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("3_iyolg")
+texture_scale = 5.0

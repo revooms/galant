@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sc101os57jc1"]
+[gd_scene load_steps=13 format=3 uid="uid://sc101os57jc1"]
 
 [ext_resource type="Script" uid="uid://ddxoknrqnjpen" path="res://prefabs/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://dn6g7hngkyjj3" path="res://prefabs/flicker_light/flicker_light.tscn" id="3_ev8v4"]
@@ -6,9 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bc0cqpg1d4mme" path="res://prefabs/player/player_parts.png" id="4_binfn"]
 [ext_resource type="Texture2D" uid="uid://dmrbmmrpricsx" path="res://prefabs/player/smoke.png" id="5_klv5p"]
 [ext_resource type="Material" uid="uid://w14fo5csuhi4" path="res://prefabs/player/smoke_particles.tres" id="6_iylwk"]
-[ext_resource type="Texture2D" uid="uid://duw7b72ogcoxp" path="res://assets/textures/lights/flashlight.png" id="7_ev8v4"]
 [ext_resource type="AudioStream" uid="uid://dcbbojl5wojr" path="res://assets/audio/fx/thruster.wav" id="7_vhck3"]
-[ext_resource type="Theme" uid="uid://cg1gg2gvibn53" path="res://ui/themes/debug_theme.tres" id="9_2c4n1"]
+[ext_resource type="PackedScene" uid="uid://x7da3c0b0dpu" path="res://prefabs/props/flashlight/flashlight.tscn" id="8_2c4n1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klv5p"]
 size = Vector2(30, 62)
@@ -25,11 +24,19 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("4_binfn")
 region = Rect2(0, 128, 128, 128)
 
-[node name="Player" type="CharacterBody2D" groups=["players"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("disable_on_ready") groups=["players"]]
 z_index = 100
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8afob")
+disable_on_ready = [NodePath("Polygon2D")]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-141, -87.5147)
+scale = Vector2(1, 1.40196)
+color = Color(0.128018, 0.195474, 0.146815, 1)
+polygon = PackedVector2Array(140, 1.79371, -7, 41.7378, 78, 67.4161, 218, 66.7028, 305, 38.1713)
+uv = PackedVector2Array(2, 0.5, -240, 37.5, -165, 209.5, 152, 209.5, 285, 24.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -31)
@@ -39,14 +46,12 @@ shape = SubResource("RectangleShape2D_klv5p")
 
 [node name="CameraRig" parent="." instance=ExtResource("3_gmlin")]
 
-[node name="Light" parent="." instance=ExtResource("3_ev8v4")]
-texture_scale = 2.0
-
 [node name="PlayerHead" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -48)
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_klv5p")
+flip_h = true
 
 [node name="PlayerBody" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -56,10 +61,12 @@ texture = SubResource("AtlasTexture_iylwk")
 
 [node name="Jetpack" type="Sprite2D" parent="PlayerBody"]
 unique_name_in_owner = true
-position = Vector2(-4, 0)
+position = Vector2(-48, 0)
 texture = SubResource("AtlasTexture_binfn")
+flip_h = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="PlayerBody/Jetpack"]
+z_index = 1
 emitting = false
 amount = 100
 texture = ExtResource("5_klv5p")
@@ -79,50 +86,18 @@ scale = Vector2(4, 4)
 color = Color(0.584935, 0.321228, 0.179698, 1)
 intensity = 1.452
 
-[node name="FlashLight" type="PointLight2D" parent="PlayerBody"]
-visible = false
-position = Vector2(-744, -76)
-texture = ExtResource("7_ev8v4")
-texture_scale = 3.0
+[node name="MountPointLeftHand" type="Node2D" parent="PlayerBody"]
+
+[node name="LeftArmPivot" type="Node2D" parent="PlayerBody"]
+position = Vector2(0, -32)
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayerBody/LeftArmPivot"]
+polygon = PackedVector2Array(-4, -12, 120, -8, 120, 8, -4, 0)
+
+[node name="Flashlight" parent="PlayerBody/LeftArmPivot/Polygon2D" instance=ExtResource("8_2c4n1")]
+position = Vector2(124, 0)
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -226.0
-offset_bottom = 333.0
-grow_horizontal = 0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="DebugPanel" type="Panel" parent="UI/MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/DebugPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="PlayerDebugLabel" type="RichTextLabel" parent="UI/MarginContainer/DebugPanel/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("9_2c4n1")
-bbcode_enabled = true
-text = "Player Debug"
-fit_content = true
-scroll_active = false
-shortcut_keys_enabled = false
 
 [node name="CheckSurroundings" type="Node2D" parent="."]
 
