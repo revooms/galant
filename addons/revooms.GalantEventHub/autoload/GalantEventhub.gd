@@ -2,6 +2,7 @@ extends Node
 
 signal exitrequested
 signal maingameready
+signal player_flashlight_toggled
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,4 +14,4 @@ func _process(_delta: float) -> void:
 
 func trigger(signalName: String) -> void:
 	emit_signal(signalName)
-	GalantDebugger.line(self, "Signal emitted: %s" % [signalName])
+	# GalantDebugger.line(self, "Signal emitted: %s" % [signalName])

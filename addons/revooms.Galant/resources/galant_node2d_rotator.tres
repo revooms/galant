@@ -1,6 +1,8 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://7pxrmrgbclt1"]
+[gd_resource type="Resource" script_class="GalantNode2DRotator" load_steps=2 format=3 uid="uid://7pxrmrgbclt1"]
 
 [ext_resource type="Script" uid="uid://6b57poilg1wa" path="res://addons/revooms.Galant/resources/galant_node2d_rotator.gd" id="1_k56op"]
 
 [resource]
 script = ExtResource("1_k56op")
+speed = 0.1
+rotate_clockwise = true

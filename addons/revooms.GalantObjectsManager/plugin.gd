@@ -14,4 +14,3 @@ func _enable_plugin():
 
 func _disable_plugin():
 	super._disable_plugin()
-

@@ -1,6 +1,16 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bevcgbkwlpq4c"]
+[gd_resource type="Resource" script_class="GalantObject" load_steps=2 format=3 uid="uid://bevcgbkwlpq4c"]
 
 [ext_resource type="Script" uid="uid://c6jobde7s4u1v" path="res://addons/revooms.GalantObjectsManager/resources/GalantObject.gd" id="1_coa6q"]
 
 [resource]
 script = ExtResource("1_coa6q")
+uuid = ""
+title = "Untitled Object"
+description = "Lorem ipsum"
+weight = 1.0
+grid_size = Vector2i(1, 0)
+is_container = false
+is_flammable = false
+is_fluid = false
+is_stackable = false
+max_stack = 10

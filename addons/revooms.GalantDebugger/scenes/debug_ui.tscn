@@ -1,0 +1,187 @@
+[gd_scene load_steps=2 format=3 uid="uid://co6uf6pip1qat"]
+
+[ext_resource type="Theme" uid="uid://cg1gg2gvibn53" path="res://ui/themes/debug_theme.tres" id="1_njytn"]
+
+[node name="DebugUI" type="CanvasLayer"]
+
+[node name="PanelTopLeft" type="Control" parent="."]
+custom_minimum_size = Vector2(220, 39)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 220.0
+offset_bottom = 39.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelTopLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="PanelTopLeft/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelTopLeft/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelTopLeft/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_njytn")
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
+
+[node name="PanelTopRight" type="Control" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_bottom = 296.0
+grow_horizontal = 0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelTopRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="PanelTopRight/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelTopRight/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelTopRight/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_njytn")
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
+scroll_following = true
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="PanelBottomLeft" type="Control" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 220.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBottomLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="PanelBottomLeft/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBottomLeft/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelBottomLeft/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_njytn")
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
+
+[node name="PanelBottomRight" type="Control" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBottomRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="PanelBottomRight/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelBottomRight/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelBottomRight/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_njytn")
+bbcode_enabled = true
+text = "RichTextLabel"
+fit_content = true
